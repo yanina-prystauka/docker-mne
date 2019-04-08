@@ -1,6 +1,7 @@
 #!/bin/bash
 #entrypoint pre-initialization
 source /environment
+source activate mne
 
 export TMPDIR=/tmp
 export JOBLIB_TEMP_FOLDER=$TMPDIR

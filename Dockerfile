@@ -13,7 +13,7 @@ RUN wget "https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh" && 
 	bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/anaconda3
 ENV PATH "/usr/local/anaconda3/bin:${PATH}"
 RUN wget "https://raw.githubusercontent.com/mne-tools/mne-python/master/environment.yml" && \
-	conda install -y -f environment.yml
+	conda create -n mne -f environment.yml && source activate mne
 
 RUN conda install -y git pip
 
