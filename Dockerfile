@@ -70,7 +70,10 @@ RUN ldconfig
 
 # Directories
 ## binds
-RUN mkdir -p /{scratch,input,output,freesurfer,data}
+RUN mkdir -p /scratch && mkdir /input && \
+    mkdir /freesurfer && \
+    mkdir /data && \
+    mkdir /output
 RUN mkdir -p /bind/scripts
 
 
