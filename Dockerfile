@@ -6,22 +6,6 @@ ENV DOWNLOADS /tmp/downloads
 WORKDIR $DOWNLOADS
 
 
-# Python
-## Anaconda 3
-WORKDIR $DOWNLOADS
-RUN wget "https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh" && \
-	bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/anaconda3
-ENV PATH "/usr/local/anaconda3/bin:${PATH}"
-RUN wget "https://raw.githubusercontent.com/rhancockn/mne-python/master/environment.yml" && \
-	conda env create -n mne -f environment.yml
-
-RUN /bin/bash -c ". activate mne" && \
-conda install -y git pip && \
-pip install autoreject && \
-pip install -U git+https://github.com/rhancockn/mne-python.git && \
-pip install pathlib && \
-conda install -y qt pyqt
-
 # libxi6 is the critical packge to get qt/xcb working
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
 gcc-multilib libx11-xcb1 libxi6
@@ -62,6 +46,17 @@ ENV PERL5LIB /opt/freesurfer/mni/lib/perl5/5.8.5
 ENV MNI_PERL5LIB /opt/freesurfer/mni/lib/perl5/5.8.5
 ENV PATH $PATH:/opt/freesurfer/bin:/opt/freesurfer/fsfast/bin:/opt/freesurfer/tktools:/opt/freesurfer/mni/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
+
+# Python
+## Anaconda 3
+WORKDIR $DOWNLOADS
+RUN wget "https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh" && \
+	bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/anaconda3
+ENV PATH "/usr/local/anaconda3/bin:${PATH}"
+RUN wget "https://raw.githubusercontent.com/rhancockn/mne-python/master/environment.yml" && \
+	conda install -y git pip && conda env update -n root -f environment.yml
+
+
 # Cleanup
 RUN apt-get clean -y && apt-get autoclean -y && apt-get autoremove -y
 RUN rm -rf $DOWNLOADS
@@ -75,6 +70,12 @@ RUN mkdir -p /scratch && mkdir /input && \
     mkdir /data && \
     mkdir /output
 RUN mkdir -p /bind/scripts
+
+RUN pip install --force-reinstall -U git+https://github.com/rhancockn/mne-python.git@593b7b78e6774c3ac87fd6afadb82473daaafcad && \
+pip install -U autoreject
+
+RUN pip install pathlib
+RUN conda install -y qt pyqt
 
 
 # Configuration
@@ -96,4 +97,4 @@ USER mne
 
 ENV USER=mne
 
-RUN echo "source activate mne" > ~/.bashrc
+# RUN echo "source activate mne" > ~/.bashrc
