@@ -92,9 +92,9 @@ RUN /usr/bin/env |sed  '/^HOME/d' | sed '/^HOSTNAME/d' | sed  '/^USER/d' | sed '
 	chmod 755 /environment
 
 
-RUN useradd --create-home -s /bin/bash mne
-USER mne
+#RUN useradd --create-home -s /bin/bash mne
+#USER mne
 
-ENV USER=mne
+#ENV USER=mne
 
 # RUN echo "source activate mne" > ~/.bashrc
