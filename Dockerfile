@@ -7,6 +7,7 @@ WORKDIR $DOWNLOADS
 
 
 # libxi6 is the critical packge to get qt/xcb working
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6B05F25D762E3157
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
 gcc-multilib libx11-xcb1 libxi6
 
