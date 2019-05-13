@@ -5,10 +5,12 @@ MAINTAINER <rhancock@gmail.com>
 ENV DOWNLOADS /tmp/downloads
 WORKDIR $DOWNLOADS
 
+#update ubuntu
+FROM ubuntu:19.04
+RUN apt-get update && apt-get install -y apt-transport-https
 
 # libxi6 is the critical packge to get qt/xcb working
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6B05F25D762E3157 \
 gcc-multilib libx11-xcb1 libxi6
 
 
