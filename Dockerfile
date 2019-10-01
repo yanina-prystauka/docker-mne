@@ -31,7 +31,6 @@ RUN wget ftp://surfer.nmr.mgh.harvard.edu/pub/dist/freesurfer/6.0.0/freesurfer-L
 	    --exclude='freesurfer/average/mult-comp-cor' \
 	    --exclude='freesurfer/lib/cuda' \
 	    --exclude='freesurfer/lib/qt'
-	rm freesurfer-Linux-centos6_x86_64-stable-pub-v6.0.0.tar.gz
 
 # Configure basic freesurfer ENV
 ENV OS Linux
