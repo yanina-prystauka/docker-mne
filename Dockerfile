@@ -52,7 +52,7 @@ ENV PATH $PATH:/opt/freesurfer/bin:/opt/freesurfer/fsfast/bin:/opt/freesurfer/tk
 
 # Python
 ## Anaconda 3
-WORKDIR $DOWNLOADS
+WORKDIR /tmp/downloads
 RUN wget "https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh" && \
 	bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/anaconda3
 ENV PATH "/usr/local/anaconda3/bin:${PATH}"
