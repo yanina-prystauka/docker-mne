@@ -56,7 +56,7 @@ WORKDIR /tmp/downloads
 RUN wget "https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh" && \
 	bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/anaconda3
 ENV PATH "/usr/local/anaconda3/bin:${PATH}"
-RUN wget "https://github.com/mne-tools/mne-python/master/environment.yml" && \
+RUN wget "https://raw.githubusercontent.com/mne-tools/mne-python/master/environment.yml" && \
 	conda install -y git pip && conda env update -n root -f environment.yml
 
 
