@@ -74,7 +74,7 @@ RUN mkdir -p /scratch && mkdir /input && \
     mkdir /output
 RUN mkdir -p /bind/scripts
 
-RUN pip install --force-reinstall -U git+https://github.com/mne-tools/mne-python.git@593b7b78e6774c3ac87fd6afadb82473daaafcad && \
+RUN pip install --force-reinstall -U git+https://github.com/mne-tools/mne-python.git@3247bd1f7aafb120a20c70dd0b348c396bb74cc5  && \
 pip install -U autoreject
 
 RUN pip install pathlib
