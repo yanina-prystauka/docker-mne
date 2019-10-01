@@ -6,8 +6,8 @@ ENV DOWNLOADS /tmp/downloads
 WORKDIR $DOWNLOADS
 
 #update ubuntu
-FROM ubuntu:19.04
-RUN apt-get update && apt-get install -y apt-transport-https
+#FROM ubuntu:19.04
+#RUN apt-get update && apt-get install -y apt-transport-https
 
 # libxi6 is the critical packge to get qt/xcb working
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
