@@ -56,7 +56,7 @@ WORKDIR $DOWNLOADS
 RUN wget "https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh" && \
 	bash Anaconda3-5.0.1-Linux-x86_64.sh -b -p /usr/local/anaconda3
 ENV PATH "/usr/local/anaconda3/bin:${PATH}"
-RUN wget "https://raw.githubusercontent.com/rhancockn/mne-python/master/environment.yml" && \
+RUN wget "https://github.com/mne-tools/mne-python/master/environment.yml" && \
 	conda install -y git pip && conda env update -n root -f environment.yml
 
 
@@ -74,7 +74,7 @@ RUN mkdir -p /scratch && mkdir /input && \
     mkdir /output
 RUN mkdir -p /bind/scripts
 
-RUN pip install --force-reinstall -U git+https://github.com/rhancockn/mne-python.git@593b7b78e6774c3ac87fd6afadb82473daaafcad && \
+RUN pip install --force-reinstall -U git+https://github.com/mne-tools/mne-python.git@593b7b78e6774c3ac87fd6afadb82473daaafcad && \
 pip install -U autoreject
 
 RUN pip install pathlib
